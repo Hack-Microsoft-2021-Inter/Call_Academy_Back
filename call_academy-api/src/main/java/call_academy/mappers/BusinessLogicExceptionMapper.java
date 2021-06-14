@@ -21,9 +21,9 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
  */
-package co.edu.uniandes.csw.cassettes.mappers;
+package call_academy.mappers;
 
-import co.edu.uniandes.csw.cassettes.exceptions.BusinessLogicException;
+//import call_academy.exceptions.BusinessLogicException;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.ext.ExceptionMapper;
@@ -40,7 +40,7 @@ import javax.ws.rs.ext.Provider;
  * @author ISIS2603
  */
 @Provider
-public class BusinessLogicExceptionMapper implements ExceptionMapper<BusinessLogicException> {
+public class BusinessLogicExceptionMapper {//implements ExceptionMapper<BusinessLogicException> {
 
     /**
      * Generador de una respuesta a partir de una excepción
@@ -48,6 +48,7 @@ public class BusinessLogicExceptionMapper implements ExceptionMapper<BusinessLog
      * @param exception excepión a convertir a una respuesta REST
      * @return La respuesta HTTP con el error.
      */
+    /*
     @Override
     public Response toResponse(BusinessLogicException exception) {
         // retorna una respuesta
@@ -55,7 +56,7 @@ public class BusinessLogicExceptionMapper implements ExceptionMapper<BusinessLog
                 .entity(getInitCause(exception).getLocalizedMessage())
                 .type(MediaType.TEXT_PLAIN_TYPE)
                 .build(); //To change body of generated methods, choose Tools | Templates.
-    }
+    }*/
 
     private Throwable getInitCause(Throwable e) {
         if (e.getCause() != null) {
