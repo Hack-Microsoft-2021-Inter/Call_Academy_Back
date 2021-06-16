@@ -9,7 +9,7 @@ import java.io.Serializable;
 import javax.persistence.Entity;
 
 /**
- *holis
+ *h
  * @author Juan Pablo
  */
 @Entity
