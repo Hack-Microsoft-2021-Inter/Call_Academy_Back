@@ -14,6 +14,16 @@ import javax.persistence.Entity;
 @Entity
 public class TagEntity extends BaseEntity implements Serializable{
     
+    
+    // Relaciones 
+    
+    @ManyToMany
+    private List<MonitoriaEntity> monitorias;
+
+    @ManyToMany
+    private List<ArchivoEntity> archivos; 
+    
+  
     private String nombre; 
 
     /**
@@ -30,6 +40,28 @@ public class TagEntity extends BaseEntity implements Serializable{
      */
     public void setNombre(String nombre) {
         this.nombre = nombre;
+    }
+    
+    
+    
+    
+    
+    // set and gets relaciones 
+    
+    public List<MonitoriasEntity> getMonitorias() {
+        return monitorias;
+    }
+
+    public void setMonitorias(List<MonitoriasEntity> monitorias) {
+        this.monitorias = monitorias;
+    }
+
+    public <any> getArchivos() {
+        return archivos;
+    }
+
+    public void setArchivos(List<ArchivoEntity> archivos) {
+        this.archivos = archivos;
     }
        
     
