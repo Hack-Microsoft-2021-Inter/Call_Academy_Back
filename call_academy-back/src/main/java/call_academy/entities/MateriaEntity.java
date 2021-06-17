@@ -6,39 +6,64 @@
 package call_academy.entities;
 
 import java.io.Serializable;
+import java.util.List;
+import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
 /**
- *
- * @author Juan Pablo
+ * @author Mario Ruiz
  */
+@Entity
 public class MateriaEntity extends BaseEntity implements Serializable {
+    
+    /////////////////////////// ATRIBUTOS ////////////////////////////
     
     private String nombre;
     
-//    @ManyToMany
-//    private List<MonitorEntity> monitores;
-//    
-//    @OneToMany
-//    private List<ArchivoEntity> archivos;
-//    
-//    @OneToMany
-//    private List<MonitoriaEntity> monitorias;
-
+    /////////////////////////// RELACIONES ///////////////////////////
     
-    /**
-     * @return the nombre
-     */
+    @ManyToMany
+    private List<MonitorEntity> monitores;
+    
+    @OneToMany
+    private List<ArchivoEntity> archivos;
+    
+    @OneToMany
+    private List<MonitoriaEntity> monitorias;
+
+    //////////////////////////// MÈTODOS ////////////////////////////
+    
     public String getNombre() {
         return nombre;
     }
 
-    /**
-     * @param nombre the nombre to set
-     */
     public void setNombre(String nombre) {
         this.nombre = nombre;
+    }
+
+    public List<MonitorEntity> getMonitores() {
+        return monitores;
+    }
+
+    public void setMonitores(List<MonitorEntity> monitores) {
+        this.monitores = monitores;
+    }
+
+    public List<ArchivoEntity> getArchivos() {
+        return archivos;
+    }
+
+    public void setArchivos(List<ArchivoEntity> archivos) {
+        this.archivos = archivos;
+    }
+
+    public List<MonitoriaEntity> getMonitorias() {
+        return monitorias;
+    }
+
+    public void setMonitorias(List<MonitoriaEntity> monitorias) {
+        this.monitorias = monitorias;
     }
     
     

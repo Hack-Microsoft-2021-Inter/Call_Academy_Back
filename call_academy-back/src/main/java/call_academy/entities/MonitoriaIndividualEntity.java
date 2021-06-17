@@ -5,31 +5,29 @@
  */
 package call_academy.entities;
 
+import java.io.Serializable;
+import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 
 /**
- *
- * @author Juan Charry Gavilan
+ * @author Juan Charry 
  */
-public class MonitoriaIndividualEntity extends MonitoriaEntity {
+@Entity
+public class MonitoriaIndividualEntity extends MonitoriaEntity implements Serializable{
 
+    /////////////////////////// RELACIONES ///////////////////////////
+    
     @ManyToOne
     private EstudianteEntity estudiante;
+    
+    //////////////////////////// MÉTODOS ////////////////////////////
 
-//Getters y Setters relaciones
-    /**
-     * @return estudiante
-     */
     public EstudianteEntity getEstudiante() {
         return estudiante;
     }
 
-    /**
-     * @param estudiante the estudiante to set
-     */
     public void setEstudiante(EstudianteEntity estudiante) {
         this.estudiante = estudiante;
     }
-    
     
 }

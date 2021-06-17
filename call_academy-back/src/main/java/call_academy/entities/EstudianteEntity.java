@@ -6,61 +6,98 @@
 package call_academy.entities;
 
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.Entity;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 /**
- *
  * @author Juan Pablo
  */
 @Entity
 public class EstudianteEntity extends BaseEntity implements Serializable {
     
+    /////////////////////////// ATRIBUTOS ////////////////////////////
+    
     private String nombre;
+    
     private String correo;
+    
     private String contrasena;
 
+    /////////////////////////// RELACIONES ///////////////////////////
     
-    /**
-     * @return the nombre
-     */
+    @ManyToOne
+    private UniversidadEntity universidad;
+    
+    @OneToMany
+    private List<ArchivoEntity> archivos;
+    
+    @OneToMany
+    private List<MonitoriaIndividualEntity> monitoriasIndividivuales;
+    
+    @ManyToMany
+    private List<MonitoriaGrupalEntity> monitoriasGrupales;
+    
+    //////////////////////////// MÈTODOS ////////////////////////////
+    
     public String getNombre() {
         return nombre;
     }
 
-    /**
-     * @param nombre the nombre to set
-     */
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
 
-    /**
-     * @return the correo
-     */
     public String getCorreo() {
         return correo;
     }
 
-    /**
-     * @param correo the correo to set
-     */
     public void setCorreo(String correo) {
         this.correo = correo;
     }
 
-    /**
-     * @return the contrasena
-     */
     public String getContrasena() {
         return contrasena;
     }
 
-    /**
-     * @param contrasena the contrasena to set
-     */
     public void setContrasena(String contrasena) {
         this.contrasena = contrasena;
     }
+
+    public UniversidadEntity getUniversidad() {
+        return universidad;
+    }
+
+    public void setUniversidad(UniversidadEntity universidad) {
+        this.universidad = universidad;
+    }
+
+    public List<ArchivoEntity> getArchivos() {
+        return archivos;
+    }
+
+    public void setArchivos(List<ArchivoEntity> archivos) {
+        this.archivos = archivos;
+    }
+
+    public List<MonitoriaIndividualEntity> getMonitoriasIndividivuales() {
+        return monitoriasIndividivuales;
+    }
+
+    public void setMonitoriasIndividivuales(List<MonitoriaIndividualEntity> monitoriasIndividivuales) {
+        this.monitoriasIndividivuales = monitoriasIndividivuales;
+    }
+
+    public List<MonitoriaGrupalEntity> getMonitoriasGrupales() {
+        return monitoriasGrupales;
+    }
+
+    public void setMonitoriasGrupales(List<MonitoriaGrupalEntity> monitoriasGrupales) {
+        this.monitoriasGrupales = monitoriasGrupales;
+    }
     
     
+
 }
