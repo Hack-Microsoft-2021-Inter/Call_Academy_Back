@@ -12,29 +12,9 @@ import javax.persistence.Entity;
  * @author juanj
  */
 @Entity
-public class TagEntity {
+public class TagEntity extends BaseEntity implements Serializable{
     
-    private String id; 
     private String nombre; 
-
-    
-    
-    
-   /**
-    * 
-    * @return otiene el id 
-    */
-    public String getId() {
-        return id;
-    }
-
-    /**
-     * 
-     * @param id set the id 
-     */
-    public void setId(String id) {
-        this.id = id;
-    }
 
     /**
      * 
@@ -51,9 +31,6 @@ public class TagEntity {
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
-    
-    
-    
-    
+       
     
 }
