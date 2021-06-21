@@ -22,10 +22,10 @@ public class MonitoriaEntity {
 
     @ManyToOne
     private MateriaEntity materia;
-
-    /**
-     * @ManyToOne private MonitorEntity monitor;
-     */
+    
+    @ManyToOne
+    private MonitorEntity monitor;
+    
 //Atreibutos de la clase
     private long id;
 
@@ -69,6 +69,22 @@ public class MonitoriaEntity {
     public void setMateria(MateriaEntity materia) {
         this.materia = materia;
     }
+    
+    /**
+     * @return monitor
+     */
+    public MonitorEntity getMonitor() {
+        return monitor;
+    }
+    
+    /**
+     * @param monitor the monitor to set
+     */
+    public void setMonitor(MonitorEntity monitor) {
+        this.monitor = monitor;
+    }
+    
+    
 
 //Getters y Setter
     /**
