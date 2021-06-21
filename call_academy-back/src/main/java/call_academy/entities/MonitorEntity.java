@@ -7,68 +7,52 @@ package call_academy.entities;
 
 import java.io.Serializable;
 import java.util.List;
+import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
 /**
- * Generic entity with ID and name fields to inherit from.
- *
- * This entity sets a standar of fields and functions all entities in a project
- * should have. For example, all entities should be compared by ID when not
- * null, otherwise use the object equals method.
- *
- * @author ISIS26036
+ * @author Julián Andrés 
  */
-public class MonitorEntity extends BaseEntity implements Serializable{
+@Entity
+public class MonitorEntity extends EstudianteEntity implements Serializable{
+    
+    /////////////////////////// ATRIBUTOS ////////////////////////////
     
     private int calificacion;
-
-//    @ManyToMany
-//    (
-//            mappedBy = "monitor",
-//            fetch = FetchType.LAZY
-//    )
-//    private List<MateriaEntity> materias;
     
-//    @OneToMany
-//    (
-//            mappedBy = "monitor",
-//            fetch = FetchType.LAZY
-//    )
-//    private List<MonitoriaEntity> monitorias;
+    /////////////////////////// RELACIONES ///////////////////////////
 
+    @ManyToMany
+    private List<MateriaEntity> materias;
     
-    /**
-     * 
-     * @return Calificacion
-     */
+    @OneToMany
+    private List<MonitoriaEntity> monitorias;
+
+    //////////////////////////// MÈTODOS ////////////////////////////
+    
     public int getCalificacion() {
         return calificacion;
     }
 
-    /**
-     * 
-     * @param calificacion Calificación nueva
-     */
     public void setCalificacion(int calificacion) {
         this.calificacion = calificacion;
     }
-    
-    
- //    public List<MateriaEntity> getMaterias() {
-//        return materias;
-//    }
-//
-//    public void setMaterias(List<MateriaEntity> materias) {
-//        this.materias = materias;
-//    }
 
-//    public List<MonitoriaEntity> getMonitorias() {
-//        return monitorias;
-//    }
+    public List<MateriaEntity> getMaterias() {
+        return materias;
+    }
 
-//    public void setMonitorias(List<MonitoriaEntity> monitorias) {
-//        this.monitorias = monitorias;
-//    }
-    
+    public void setMaterias(List<MateriaEntity> materias) {
+        this.materias = materias;
+    }
+
+    public List<MonitoriaEntity> getMonitorias() {
+        return monitorias;
+    }
+
+    public void setMonitorias(List<MonitoriaEntity> monitorias) {
+        this.monitorias = monitorias;
+    }
+
 }

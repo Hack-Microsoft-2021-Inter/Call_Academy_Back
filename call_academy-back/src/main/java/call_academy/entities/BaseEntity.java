@@ -31,21 +31,19 @@ import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 
 /**
- * Generic entity with ID and name fields to inherit from.
- *
- * This entity sets a standar of fields and functions all entities in a project
- * should have. For example, all entities should be compared by ID when not
- * null, otherwise use the object equals method.
- *
- * @author ISIS26036
+ * @author Community
  */
 @MappedSuperclass
 public abstract class BaseEntity implements Serializable {
 
+    /////////////////////////// ATRIBUTOS ////////////////////////////
+    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    //////////////////////////// MÉTODOS ////////////////////////////
+    
     public Long getId() {
         return id;
     }

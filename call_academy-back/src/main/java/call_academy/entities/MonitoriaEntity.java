@@ -5,17 +5,20 @@
  */
 package call_academy.entities;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
+import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
 /**
- *
- * @author Juan Charry Gavilan
+ * @author Juan Charry 
  */
-public class MonitoriaEntity {
+@Entity
+public class MonitoriaEntity extends BaseEntity implements Serializable{
 
+<<<<<<< HEAD
 //Relaciones
     @ManyToMany
     private List<TagEntity> tags;
@@ -28,6 +31,9 @@ public class MonitoriaEntity {
     
 //Atreibutos de la clase
     private long id;
+=======
+    /////////////////////////// ATRIBUTOS ////////////////////////////
+>>>>>>> 0887168ef992034b6b8625a046734a400872086e
 
     private Date fecha;
 
@@ -40,7 +46,13 @@ public class MonitoriaEntity {
     private String lugar;
 
     private Integer precio;
+    
+    /////////////////////////// RELACIONES ///////////////////////////
+    
+    @ManyToMany
+    private List<TagEntity> tags;
 
+<<<<<<< HEAD
 //Getters y setter Relaciones
     /**
      * @return tags
@@ -85,104 +97,87 @@ public class MonitoriaEntity {
     }
     
     
+=======
+    @ManyToOne
+    private MateriaEntity materia;
+>>>>>>> 0887168ef992034b6b8625a046734a400872086e
 
-//Getters y Setter
-    /**
-     * @return id
-     */
-    public long getId() {
-        return id;
-    }
+    @ManyToOne 
+    private MonitorEntity monitor;
 
-    /**
-     * @param id the id to set
-     */
-    public void setId(long id) {
-        this.id = id;
-    }
+    //////////////////////////// MÉTODOS ////////////////////////////
 
-    /**
-     * @return fecha
-     */
     public Date getFecha() {
         return fecha;
     }
-
-    /**
-     * @param fecha the fecha to set
-     */
+    
     public void setFecha(Date fecha) {
         this.fecha = fecha;
     }
 
-    /**
-     * @return duracionHoras
-     */
     public Integer getDuracionHoras() {
         return duracionHoras;
     }
 
-    /**
-     * @param duracionHoras the duracionHoras to set
-     */
     public void setDuracionHoras(Integer duracionHoras) {
         this.duracionHoras = duracionHoras;
     }
 
-    /**
-     * @return duracionMinutos
-     */
     public Integer getDuracionMinutos() {
         return duracionMinutos;
     }
-
-    /**
-     * @param duracionMinutos the duracionMinutos to set
-     */
+    
     public void setDuracionMinutos(Integer duracionMinutos) {
         this.duracionMinutos = duracionMinutos;
     }
 
-    /**
-     * @return esVirtual
-     */
     public Boolean getEsVirtual() {
         return esVirtual;
     }
 
-    /**
-     * @param esVirtual the esVirtual to set
-     */
     public void setEsVirtual(Boolean esVirtual) {
         this.esVirtual = esVirtual;
     }
 
-    /**
-     * @return lugar
-     */
     public String getLugar() {
         return lugar;
     }
 
-    /**
-     * @param lugar the lugar to set
-     */
     public void setLugar(String lugar) {
         this.lugar = lugar;
     }
 
-    /**
-     * @return precio
-     */
     public Integer getPrecio() {
         return precio;
     }
 
-    /**
-     * @param precio the precio to set
-     */
     public void setPrecio(Integer precio) {
         this.precio = precio;
     }
 
+    public List<TagEntity> getTags() {
+        return tags;
+    }
+
+    public void setTags(List<TagEntity> tags) {
+        this.tags = tags;
+    }
+
+    public MateriaEntity getMateria() {
+        return materia;
+    }
+
+    public void setMateria(MateriaEntity materia) {
+        this.materia = materia;
+    }
+
+    public MonitorEntity getMonitor() {
+        return monitor;
+    }
+
+    public void setMonitor(MonitorEntity monitor) {
+        this.monitor = monitor;
+    }
+    
+    
 }

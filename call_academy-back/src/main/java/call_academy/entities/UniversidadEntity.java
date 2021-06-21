@@ -12,46 +12,36 @@ import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
 
 /**
- *
  * @author Juan Pablo
  */
 @Entity
 public class UniversidadEntity extends BaseEntity implements Serializable {
 
+    /////////////////////////// ATRIBUTOS ////////////////////////////
+    
     private String nombre;
     
-//    @OneToMany(
-//            mappedBy = "universidad",
-//            fetch = FetchType.LAZY
-//    )
-//    private List<EstudianteEntity> estudiantes;
+    /////////////////////////// RELACIONES ///////////////////////////
+
+    @OneToMany
+    private List<EstudianteEntity> estudiantes;
     
+    //////////////////////////// MÉTODOS ////////////////////////////
     
-    /**
-     * @return the nombre
-     */
     public String getNombre() {
         return nombre;
     }
 
-    /**
-     * @param nombre the nombre to set
-     */
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
 
-    /**
-     * @return the estudiantes
-     */
-//    public List<EstudianteEntity> getEstudiantes() {
-//        return estudiantes;
-//    }
-//
-//    /**
-//     * @param estudiantes the estudiantes to set
-//     */
-//    public void setEstudiantes(List<EstudianteEntity> estudiantes) {
-//        this.estudiantes = estudiantes;
-//    }
+    public List<EstudianteEntity> getEstudiantes() {
+        return estudiantes;
+    }
+
+    public void setEstudiantes(List<EstudianteEntity> estudiantes) {
+        this.estudiantes = estudiantes;
+    }
+    
 }

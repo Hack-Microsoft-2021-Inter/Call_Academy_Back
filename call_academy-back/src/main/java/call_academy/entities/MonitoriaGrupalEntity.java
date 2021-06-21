@@ -5,48 +5,40 @@
  */
 package call_academy.entities;
 
+import java.io.Serializable;
 import java.util.List;
+import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
 
 /**
- *
  * @author Juan Charry Gavilan
  */
-public class MonitoriaGeneralEntity extends MonitoriaEntity {
+@Entity
+public class MonitoriaGrupalEntity extends MonitoriaEntity implements Serializable{
 
-//Relaciones
-    @ManyToMany
-    private List<EstudianteEntity> estuciantes;
-
-//Atributos
+    /////////////////////////// ATRIBUTOS ////////////////////////////
+    
     private String descripcion;
 
-//Getters  y Setters
-    /**
-     * @return descripcion
-     */
+    /////////////////////////// RELACIONES ///////////////////////////
+    
+    @ManyToMany
+    private List<EstudianteEntity> estuciantes;
+    
+    //////////////////////////// MÉTODOS ////////////////////////////
+    
     public String getDescripcion() {
         return descripcion;
     }
 
-    /**
-     * @param descripcion the descripcion to set
-     */
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
     }
 
-//Getters  y Setters Relaciones
-    /**
-     * @return estudiantes
-     */
     public List<EstudianteEntity> getEstuciantes() {
         return estuciantes;
     }
 
-    /**
-     * @param estudiantes the estudiantes to set
-     */
     public void setEstuciantes(List<EstudianteEntity> estuciantes) {
         this.estuciantes = estuciantes;
     }

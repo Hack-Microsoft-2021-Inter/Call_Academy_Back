@@ -6,31 +6,52 @@
 package call_academy.entities;
 
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.Entity;
+import javax.persistence.ManyToMany;
 /**
- *
- * @author juanj
+ * @author Juan Jose
  */
 @Entity
 public class TagEntity extends BaseEntity implements Serializable{
     
+    /////////////////////////// ATRIBUTOS ////////////////////////////
+    
     private String nombre; 
+    
+    /////////////////////////// RELACIONES ///////////////////////////
+    
+    @ManyToMany
+    private List<MonitoriaEntity> monitorias;
 
-    /**
-     * 
-     * @return obtiene el nombre
-     */
+    @ManyToMany
+    private List<ArchivoEntity> archivos; 
+  
+    //////////////////////////// MÉTODOS ////////////////////////////
+    
+    
     public String getNombre() {
         return nombre;
     }
 
-    /**
-     * 
-     * @param nombre set the nombre 
-     */
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
-       
-    
+
+    public List<MonitoriaEntity> getMonitorias() {
+        return monitorias;
+    }
+
+    public void setMonitorias(List<MonitoriaEntity> monitorias) {
+        this.monitorias = monitorias;
+    }
+
+    public List<ArchivoEntity> getArchivos() {
+        return archivos;
+    }
+
+    public void setArchivos(List<ArchivoEntity> archivos) {
+        this.archivos = archivos;
+    }
+        
 }

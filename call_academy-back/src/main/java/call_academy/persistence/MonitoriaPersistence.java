@@ -25,7 +25,7 @@ public class MonitoriaPersistence {
      * El entity manager ayuda a subir cosas a la base de datos. Maneja las
      * entidades en la base de datos.
      */
-    @PersistenceContext(unitName = "callAcademyPU")
+    @PersistenceContext(unitName = "CallAcademyPU")
     protected EntityManager em;
     /**
      * El log siempre se usa para mantener propiedades importantes en la base de
