@@ -18,8 +18,7 @@ import javax.persistence.ManyToOne;
 @Entity
 public class MonitoriaEntity extends BaseEntity implements Serializable{
 
-<<<<<<< HEAD
-//Relaciones
+    /////////////////////////// RELACIONES ///////////////////////////
     @ManyToMany
     private List<TagEntity> tags;
 
@@ -29,12 +28,8 @@ public class MonitoriaEntity extends BaseEntity implements Serializable{
     @ManyToOne
     private MonitorEntity monitor;
     
-//Atreibutos de la clase
-    private long id;
-=======
     /////////////////////////// ATRIBUTOS ////////////////////////////
->>>>>>> 0887168ef992034b6b8625a046734a400872086e
-
+    
     private Date fecha;
 
     private Integer duracionHoras;
@@ -46,14 +41,8 @@ public class MonitoriaEntity extends BaseEntity implements Serializable{
     private String lugar;
 
     private Integer precio;
+    //////////////////////////// MÉTODOS RELACIONES ////////////////////////////
     
-    /////////////////////////// RELACIONES ///////////////////////////
-    
-    @ManyToMany
-    private List<TagEntity> tags;
-
-<<<<<<< HEAD
-//Getters y setter Relaciones
     /**
      * @return tags
      */
@@ -96,16 +85,7 @@ public class MonitoriaEntity extends BaseEntity implements Serializable{
         this.monitor = monitor;
     }
     
-    
-=======
-    @ManyToOne
-    private MateriaEntity materia;
->>>>>>> 0887168ef992034b6b8625a046734a400872086e
-
-    @ManyToOne 
-    private MonitorEntity monitor;
-
-    //////////////////////////// MÉTODOS ////////////////////////////
+    //////////////////////////// MÉTODOS ATRIBUTOS ////////////////////////////
 
     public Date getFecha() {
         return fecha;
@@ -154,30 +134,4 @@ public class MonitoriaEntity extends BaseEntity implements Serializable{
     public void setPrecio(Integer precio) {
         this.precio = precio;
     }
-
-    public List<TagEntity> getTags() {
-        return tags;
-    }
-
-    public void setTags(List<TagEntity> tags) {
-        this.tags = tags;
-    }
-
-    public MateriaEntity getMateria() {
-        return materia;
-    }
-
-    public void setMateria(MateriaEntity materia) {
-        this.materia = materia;
-    }
-
-    public MonitorEntity getMonitor() {
-        return monitor;
-    }
-
-    public void setMonitor(MonitorEntity monitor) {
-        this.monitor = monitor;
-    }
-    
-    
 }
