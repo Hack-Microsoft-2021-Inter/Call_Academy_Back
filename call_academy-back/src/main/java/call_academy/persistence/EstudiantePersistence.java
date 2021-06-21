@@ -18,8 +18,13 @@ import javax.persistence.Query;
  */
 @Stateless
 public class EstudiantePersistence {
+    
+    /////////////////////////// ATRIBUTOS ////////////////////////////
+    
     @PersistenceContext(unitName = "CallAcademyPU")
     protected EntityManager em;
+    
+    //////////////////////////// MÉTODOS ////////////////////////////
     
     public EstudianteEntity create(EstudianteEntity estudiante) {
         em.persist(estudiante);
