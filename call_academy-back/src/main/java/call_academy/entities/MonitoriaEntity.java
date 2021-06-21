@@ -11,6 +11,8 @@ import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.Temporal;
+import uk.co.jemos.podam.common.PodamExclude;
 
 /**
  * @author Juan Charry 
@@ -19,17 +21,22 @@ import javax.persistence.ManyToOne;
 public class MonitoriaEntity extends BaseEntity implements Serializable{
 
     /////////////////////////// RELACIONES ///////////////////////////
-    @ManyToMany
+    
+    @PodamExclude
+    @ManyToMany(mappedBy = "monitorias")
     private List<TagEntity> tags;
-
+    
+    @PodamExclude
     @ManyToOne
     private MateriaEntity materia;
     
+    @PodamExclude
     @ManyToOne
     private MonitorEntity monitor;
     
     /////////////////////////// ATRIBUTOS ////////////////////////////
     
+    @Temporal(javax.persistence.TemporalType.DATE)
     private Date fecha;
 
     private Integer duracionHoras;
@@ -41,6 +48,7 @@ public class MonitoriaEntity extends BaseEntity implements Serializable{
     private String lugar;
 
     private Integer precio;
+    
     //////////////////////////// MÉTODOS RELACIONES ////////////////////////////
     
     /**
