@@ -7,7 +7,9 @@ package call_academy.entities;
 
 import java.io.Serializable;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
@@ -23,13 +25,25 @@ public class MateriaEntity extends BaseEntity implements Serializable {
     
     /////////////////////////// RELACIONES ///////////////////////////
     
-    @ManyToMany
+    @ManyToMany (
+        mappedBy = "materias"
+    )
     private List<MonitorEntity> monitores;
     
-    @OneToMany
+    @OneToMany (
+        mappedBy = "materia",
+        cascade = CascadeType.PERSIST,
+        fetch = FetchType.LAZY,
+        orphanRemoval = true
+    )
     private List<ArchivoEntity> archivos;
     
-    @OneToMany
+    @OneToMany (
+        mappedBy = "materia",
+        cascade = CascadeType.PERSIST,
+        fetch = FetchType.LAZY,
+        orphanRemoval = true
+    )
     private List<MonitoriaEntity> monitorias;
 
     //////////////////////////// MÈTODOS ////////////////////////////
@@ -65,6 +79,4 @@ public class MateriaEntity extends BaseEntity implements Serializable {
     public void setMonitorias(List<MonitoriaEntity> monitorias) {
         this.monitorias = monitorias;
     }
-    
-    
 }
