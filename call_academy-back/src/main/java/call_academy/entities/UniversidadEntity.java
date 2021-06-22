@@ -27,8 +27,7 @@ public class UniversidadEntity extends BaseEntity implements Serializable {
     @OneToMany (
         mappedBy = "universidad",
         cascade = CascadeType.PERSIST,
-        fetch = FetchType.LAZY,
-        orphanRemoval = true
+        fetch = FetchType.LAZY
     )
     private List<EstudianteEntity> estudiantes;
     
