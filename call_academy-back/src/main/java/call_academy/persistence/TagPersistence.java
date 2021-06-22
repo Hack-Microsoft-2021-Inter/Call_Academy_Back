@@ -20,7 +20,7 @@ import javax.persistence.Query;
  */
 @Stateless
 public class TagPersistence {
-    @PersistenceContext(unitName = "callacademyPU")
+    @PersistenceContext(unitName = "CallAcademyPU")
     protected EntityManager em;
     
     private static final Logger LOGGER = Logger.getLogger(TagPersistence.class.getName());
