@@ -43,20 +43,12 @@ public class UniversidadPersistence {
         return result;
     }
     
-    public UniversidadEntity findByNombre(String nombre) {
-        TypedQuery query = em.createQuery("Select e From UniversidadEntity e where e.nombre = :nombre", UniversidadEntity.class);
-        query = query.setParameter("nombre", nombre);
+    public List<UniversidadEntity> findByNombre(String nombre) {
+        TypedQuery query = em.createQuery("Select e From UniversidadEntity e where e.nombre like :nombre", UniversidadEntity.class);
+        query = query.setParameter("nombre", "%" + nombre + "%");
         
         List<UniversidadEntity> encontrados = query.getResultList();
-        UniversidadEntity resultado;
-        if (encontrados == null) {
-            resultado = null;
-        } else if (encontrados.isEmpty()) {
-            resultado = null;
-        } else {
-            resultado = encontrados.get(0);
-        }
-        return resultado;
+        return encontrados;
     }
     
     public UniversidadEntity update(UniversidadEntity universidad) {
