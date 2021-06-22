@@ -7,7 +7,9 @@ package call_academy.entities;
 
 import java.io.Serializable;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
@@ -31,13 +33,25 @@ public class EstudianteEntity extends BaseEntity implements Serializable {
     @ManyToOne
     private UniversidadEntity universidad;
     
-    @OneToMany
+    @OneToMany (
+        mappedBy = "creador",
+        cascade = CascadeType.PERSIST,
+        fetch = FetchType.LAZY,
+        orphanRemoval = true
+    )
     private List<ArchivoEntity> archivos;
     
-    @OneToMany
-    private List<MonitoriaIndividualEntity> monitoriasIndividivuales;
+    @OneToMany (
+        mappedBy = "estudiante",
+        cascade = CascadeType.PERSIST,
+        fetch = FetchType.LAZY,
+        orphanRemoval = true
+    )
+    private List<MonitoriaIndividualEntity> monitoriasIndividuales;
     
-    @ManyToMany
+    @ManyToMany (
+        mappedBy = "estuciantes"
+    )
     private List<MonitoriaGrupalEntity> monitoriasGrupales;
     
     //////////////////////////// MÈTODOS ////////////////////////////
@@ -82,12 +96,12 @@ public class EstudianteEntity extends BaseEntity implements Serializable {
         this.archivos = archivos;
     }
 
-    public List<MonitoriaIndividualEntity> getMonitoriasIndividivuales() {
-        return monitoriasIndividivuales;
+    public List<MonitoriaIndividualEntity> getMonitoriasIndividuales() {
+        return monitoriasIndividuales;
     }
 
-    public void setMonitoriasIndividivuales(List<MonitoriaIndividualEntity> monitoriasIndividivuales) {
-        this.monitoriasIndividivuales = monitoriasIndividivuales;
+    public void setMonitoriasIndividuales(List<MonitoriaIndividualEntity> monitoriasIndividuales) {
+        this.monitoriasIndividuales = monitoriasIndividuales;
     }
 
     public List<MonitoriaGrupalEntity> getMonitoriasGrupales() {
@@ -97,7 +111,4 @@ public class EstudianteEntity extends BaseEntity implements Serializable {
     public void setMonitoriasGrupales(List<MonitoriaGrupalEntity> monitoriasGrupales) {
         this.monitoriasGrupales = monitoriasGrupales;
     }
-    
-    
-
 }
