@@ -11,6 +11,8 @@ import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.Temporal;
+import uk.co.jemos.podam.common.PodamExclude;
 
 /**
  * @author Juan Charry 
@@ -18,8 +20,23 @@ import javax.persistence.ManyToOne;
 @Entity
 public class MonitoriaEntity extends BaseEntity implements Serializable{
 
+    /////////////////////////// RELACIONES ///////////////////////////
+    
+    @PodamExclude
+    @ManyToMany(mappedBy = "monitorias")
+    private List<TagEntity> tags;
+    
+    @PodamExclude
+    @ManyToOne
+    private MateriaEntity materia;
+    
+    @PodamExclude
+    @ManyToOne
+    private MonitorEntity monitor;
+    
     /////////////////////////// ATRIBUTOS ////////////////////////////
-
+    
+    @Temporal(javax.persistence.TemporalType.DATE)
     private Date fecha;
 
     private Integer duracionHoras;
@@ -32,18 +49,51 @@ public class MonitoriaEntity extends BaseEntity implements Serializable{
 
     private Integer precio;
     
-    /////////////////////////// RELACIONES ///////////////////////////
+    //////////////////////////// MÉTODOS RELACIONES ////////////////////////////
     
-    @ManyToMany
-    private List<TagEntity> tags;
+    /**
+     * @return tags
+     */
+    public List<TagEntity> getTags() {
+        return tags;
+    }
 
-    @ManyToOne
-    private MateriaEntity materia;
+    /**
+     * @param tags the tags to set
+     */
+    public void setTags(List<TagEntity> tags) {
+        this.tags = tags;
+    }
 
-    @ManyToOne 
-    private MonitorEntity monitor;
+    /**
+     * @return materia
+     */
+    public MateriaEntity getMateria() {
+        return materia;
+    }
 
-    //////////////////////////// MÉTODOS ////////////////////////////
+    /**
+     * @param materia the materia to set
+     */
+    public void setMateria(MateriaEntity materia) {
+        this.materia = materia;
+    }
+    
+    /**
+     * @return monitor
+     */
+    public MonitorEntity getMonitor() {
+        return monitor;
+    }
+    
+    /**
+     * @param monitor the monitor to set
+     */
+    public void setMonitor(MonitorEntity monitor) {
+        this.monitor = monitor;
+    }
+    
+    //////////////////////////// MÉTODOS ATRIBUTOS ////////////////////////////
 
     public Date getFecha() {
         return fecha;
@@ -92,30 +142,4 @@ public class MonitoriaEntity extends BaseEntity implements Serializable{
     public void setPrecio(Integer precio) {
         this.precio = precio;
     }
-
-    public List<TagEntity> getTags() {
-        return tags;
-    }
-
-    public void setTags(List<TagEntity> tags) {
-        this.tags = tags;
-    }
-
-    public MateriaEntity getMateria() {
-        return materia;
-    }
-
-    public void setMateria(MateriaEntity materia) {
-        this.materia = materia;
-    }
-
-    public MonitorEntity getMonitor() {
-        return monitor;
-    }
-
-    public void setMonitor(MonitorEntity monitor) {
-        this.monitor = monitor;
-    }
-    
-    
 }
