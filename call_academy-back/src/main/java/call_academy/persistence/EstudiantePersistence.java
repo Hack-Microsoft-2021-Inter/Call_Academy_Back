@@ -11,6 +11,7 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+import javax.persistence.TypedQuery;
 
 /**
  *
@@ -40,6 +41,30 @@ public class EstudiantePersistence {
     public EstudianteEntity find(Long id) {
         EstudianteEntity result = em.find(EstudianteEntity.class, id);
         return result;
+    }
+    
+    public List<EstudianteEntity> findByNombre(String nombre) {
+        TypedQuery query = em.createQuery("Select e From EstudianteEntity e where e.nombre like :nombre", EstudianteEntity.class);
+        query = query.setParameter("nombre", "%" + nombre + "%");
+        
+        List<EstudianteEntity> encontrados = query.getResultList();
+        return encontrados;
+    }
+    
+    public EstudianteEntity findByCorreo(String correo) {
+        TypedQuery query = em.createQuery("Select e From EstudianteEntity e where e.correo = :correo", EstudianteEntity.class);
+        query = query.setParameter("correo", correo);
+        
+        List<EstudianteEntity> encontrados = query.getResultList();
+        EstudianteEntity resultado;
+        if (encontrados == null) {
+            resultado = null;
+        } else if (encontrados.isEmpty()) {
+            resultado = null;
+        } else {
+            resultado = encontrados.get(0);
+        }
+        return resultado;
     }
     
     public EstudianteEntity update(EstudianteEntity estudiante) {
