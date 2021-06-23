@@ -41,7 +41,7 @@ public class MonitoriaGrupalEstudiantes {
         }
         
         estudianteEntity.getMonitoriasGrupales().add(monitoriaGrupalEntity);
-        monitoriaGrupalEntity.getEstuciantes().add(estudianteEntity);
+        monitoriaGrupalEntity.getEstudiantes().add(estudianteEntity);
         LOGGER.log(Level.INFO, "Termina proceso de asociarle un monitoriaGrupalo al estudiante con id = {0}", estudiantesId);
         return monitoriaGrupalEntity;
     }
@@ -54,7 +54,7 @@ public class MonitoriaGrupalEstudiantes {
             throw new BusinessLogicException("El monitoriaGrupalo o estudiante estan vacios");
         }
         estudianteEntity.getMonitoriasGrupales().add(monitoriaGrupalEntity);
-        monitoriaGrupalEntity.getEstuciantes().add(estudianteEntity);
+        monitoriaGrupalEntity.getEstudiantes().add(estudianteEntity);
         LOGGER.log(Level.INFO, "Termina proceso de asociarle un monitoriaGrupalo al estudiante con id = {0}", estudiantesId);
         return estudianteEntity;
     }
@@ -65,12 +65,12 @@ public class MonitoriaGrupalEstudiantes {
         if (monitoriaGrupal == null){
             throw new BusinessLogicException("El monitoriaGrupalo no existe");
         }
-        return monitoriaGrupal.getEstuciantes();
+        return monitoriaGrupal.getEstudiantes();
     }
 
     public EstudianteEntity getEstudiante(Long monitoriaGrupalId, Long estudianteId) throws BusinessLogicException {
         LOGGER.log(Level.INFO, "Inicia proceso de consultar el estudiante con id = {0} del monitoriaGrupalo con id = " + estudianteId, monitoriaGrupalId);
-        List<EstudianteEntity> estudiantes = monitoriaGrupalPersistence.find(monitoriaGrupalId).getEstuciantes();
+        List<EstudianteEntity> estudiantes = monitoriaGrupalPersistence.find(monitoriaGrupalId).getEstudiantes();
         EstudianteEntity estudianteWanted = estudiantePersistence.find(estudianteId);
         int index = estudiantes.indexOf(estudianteWanted);
         LOGGER.log(Level.INFO, "Termina proceso de consultar el estudiante con id = {0} del monitoriaGrupalo con id = " + estudianteId, monitoriaGrupalId);
@@ -83,9 +83,9 @@ public class MonitoriaGrupalEstudiantes {
     public List<EstudianteEntity> replaceEstudiantes(Long monitoriaGrupalId, List<EstudianteEntity> replace){
         LOGGER.log(Level.INFO, "Inicia proceso de remplazarlos estudiantes del monitoriaGrupalo con id = {0}", monitoriaGrupalId);
         MonitoriaGrupalEntity monitoriaGrupal = monitoriaGrupalPersistence.find(monitoriaGrupalId);
-        monitoriaGrupal.setEstuciantes(replace);
+        monitoriaGrupal.setEstudiantes(replace);
         LOGGER.log(Level.INFO, "Termina proceso de remplazarlos estudiantes del monitoriaGrupalo con id = {0}", monitoriaGrupalId);
-        return monitoriaGrupal.getEstuciantes();
+        return monitoriaGrupal.getEstudiantes();
         
     }
 
@@ -99,7 +99,7 @@ public class MonitoriaGrupalEstudiantes {
         }
 
         estudianteEntity.getMonitoriasGrupales().remove(monitoriaGrupalEntity);
-        monitoriaGrupalEntity.getEstuciantes().remove(estudianteEntity);
+        monitoriaGrupalEntity.getEstudiantes().remove(estudianteEntity);
         LOGGER.log(Level.INFO, "Termina proceso de borrar un monitoriaGrupalo del estudiante con id = {0}", estudiantesId);
     }
 }
