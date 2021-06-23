@@ -23,7 +23,7 @@ public class MonitoriaGrupalEntity extends MonitoriaEntity implements Serializab
     /////////////////////////// RELACIONES ///////////////////////////
     
     @ManyToMany
-    private List<EstudianteEntity> estuciantes;
+    private List<EstudianteEntity> estudiantes;
     
     //////////////////////////// MÉTODOS ////////////////////////////
     
@@ -35,12 +35,12 @@ public class MonitoriaGrupalEntity extends MonitoriaEntity implements Serializab
         this.descripcion = descripcion;
     }
 
-    public List<EstudianteEntity> getEstuciantes() {
-        return estuciantes;
+    public List<EstudianteEntity> getEstudiantes() {
+        return estudiantes;
     }
 
-    public void setEstuciantes(List<EstudianteEntity> estuciantes) {
-        this.estuciantes = estuciantes;
+    public void setEstudiantes(List<EstudianteEntity> estudiantes) {
+        this.estudiantes = estudiantes;
     }
 
 }
