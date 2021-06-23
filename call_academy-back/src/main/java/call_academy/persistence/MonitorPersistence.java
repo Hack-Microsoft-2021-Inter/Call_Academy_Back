@@ -21,7 +21,7 @@ import javax.persistence.TypedQuery;
  */
 @Stateless
 public class MonitorPersistence {
-    @PersistenceContext(unitName = "callacademyPU")
+    @PersistenceContext(unitName = "CallAcademyPU")
     protected EntityManager em;
     
     private static final Logger LOGGER = Logger.getLogger(MonitorPersistence.class.getName());

@@ -49,7 +49,7 @@ public class ArchivoPersistence {
         List<ArchivoEntity> encontrados = query.getResultList();
         return encontrados;
     }
-    
+  
     public void delete(Long archivoId){
         LOGGER.log(Level.INFO, "Borrando el archivo con id={0}", archivoId);
         ArchivoEntity archivoEntity = em.find(ArchivoEntity.class, archivoId);
