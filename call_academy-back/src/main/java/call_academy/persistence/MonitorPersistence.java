@@ -13,6 +13,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.ejb.Stateless;
 import javax.persistence.Query;
+import javax.persistence.TypedQuery;
 
 /**
  *
@@ -45,6 +46,46 @@ public class MonitorPersistence {
         LOGGER.log(Level.INFO, "Borrando el monitor con id={0}", monitorId);
         MonitorEntity monitorEntity = em.find(MonitorEntity.class, monitorId);
         em.remove(monitorEntity);
+    }
+    
+    public List<MonitorEntity> findByNombre(String nombre) {
+        TypedQuery query = em.createQuery("Select e From MonitorEntity e where e.nombre like :nombre", MonitorEntity.class);
+        query = query.setParameter("nombre", "%" + nombre + "%");
+        
+        List<MonitorEntity> encontrados = query.getResultList();
+        return encontrados;
+    }
+    
+    public MonitorEntity findByCorreo(String correo) {
+        TypedQuery query = em.createQuery("Select e From MonitorEntity e where e.correo = :correo", MonitorEntity.class);
+        query = query.setParameter("correo", correo);
+        
+        List<MonitorEntity> encontrados = query.getResultList();
+        MonitorEntity resultado;
+        if (encontrados == null) {
+            resultado = null;
+        } else if (encontrados.isEmpty()) {
+            resultado = null;
+        } else {
+            resultado = encontrados.get(0);
+        }
+        return resultado;
+    }
+    
+    public MonitorEntity findByCalificacion(String correo) {
+        TypedQuery query = em.createQuery("Select e From MonitorEntity e where e.calificacion = :calificacion", MonitorEntity.class);
+        query = query.setParameter("calificacion", correo);
+        
+        List<MonitorEntity> encontrados = query.getResultList();
+        MonitorEntity resultado;
+        if (encontrados == null) {
+            resultado = null;
+        } else if (encontrados.isEmpty()) {
+            resultado = null;
+        } else {
+            resultado = encontrados.get(0);
+        }
+        return resultado;
     }
     
     public MonitorEntity update(MonitorEntity monitorEntity){
