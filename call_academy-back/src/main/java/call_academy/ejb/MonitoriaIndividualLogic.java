@@ -13,12 +13,14 @@ import call_academy.persistence.MonitoriaIndividualPersistence;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.ejb.Stateless;
 import javax.inject.Inject;
 
 /**
  *
  * @author Juan Charry Gavilan
  */
+@Stateless
 public class MonitoriaIndividualLogic {
     
     /////////////////////////// ATRIBUTOS ////////////////////////////
@@ -38,7 +40,7 @@ public class MonitoriaIndividualLogic {
     
     public MonitoriaIndividualEntity createmonitoriaIndividual (MonitoriaIndividualEntity monitoria) throws BusinessLogicException{
         
-        LOGGER.log(Level.INFO, "Inicia proceso de crear monitoria con id = {0}", monitoria.getId());
+        LOGGER.log(Level.INFO, "Inicia proceso de crear monitoria individual con id = {0}", monitoria.getId());
         
         //Si es antes del dia de hoy se revisa en el front
         if (monitoria.getFecha() == null)
@@ -64,7 +66,7 @@ public class MonitoriaIndividualLogic {
         
         monitoria = persistence.create(monitoria);
         
-        LOGGER.log(Level.INFO, "Finaliza el proceso de crear una monitoria con id = {0}", monitoria.getId());
+        LOGGER.log(Level.INFO, "Finaliza el proceso de crear una monitoria individual con id = {0}", monitoria.getId());
         
         return monitoria;
     }
@@ -81,7 +83,7 @@ public class MonitoriaIndividualLogic {
     
     public MonitoriaIndividualEntity updateMonitoriaIndividual(MonitoriaIndividualEntity monitoria) throws BusinessLogicException {
         
-        LOGGER.log(Level.INFO, "Inicia proceso de actualizar monitoria con id = {0}", monitoria.getId());
+        LOGGER.log(Level.INFO, "Inicia proceso de actualizar monitoria individual con id = {0}", monitoria.getId());
         
         if (monitoria.getFecha() == null)
             throw new BusinessLogicException("La fecha no puede ser nula");
@@ -104,15 +106,15 @@ public class MonitoriaIndividualLogic {
         if (monitoria.getMateria() == null || materiaPersistence.find(monitoria.getMateria().getId()) == null )
             throw new BusinessLogicException("La monitoria debe tener una materia valida");
         
-        LOGGER.log(Level.INFO, "Finaliza proceso de actualizar monitoria con id = {0}", monitoria.getId());
+        LOGGER.log(Level.INFO, "Finaliza proceso de actualizar monitoria individual con id = {0}", monitoria.getId());
         
         monitoria = persistence.update(monitoria);
         return monitoria;
     } 
     
     public void deleteMonitoriaIndividual(Long id) throws BusinessLogicException {
-        LOGGER.log(Level.INFO, "Inicia proceso de borrar la monitoria con id = {0}", id);
+        LOGGER.log(Level.INFO, "Inicia proceso de borrar la monitoria individualcon id = {0}", id);
         persistence.delete(id);
-        LOGGER.log(Level.INFO, "Termina proceso de borrar la monitoria con id = {0}", id);
+        LOGGER.log(Level.INFO, "Termina proceso de borrar la monitoria individual con id = {0}", id);
     }
 }
