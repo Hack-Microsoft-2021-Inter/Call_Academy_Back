@@ -13,6 +13,7 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+import javax.persistence.TypedQuery;
 
 /**
  *
@@ -41,6 +42,14 @@ public class ArchivoPersistence {
         return em.find(ArchivoEntity.class, archivoId);
     }
     
+    public List<ArchivoEntity> findByArchivo(String archivo){
+        TypedQuery query = em.createQuery("Select e From ArchivoEntity e where e.archivo like :archivo", ArchivoEntity.class);
+        query = query.setParameter("Archivo", "%" + archivo + "%");
+        
+        List<ArchivoEntity> encontrados = query.getResultList();
+        return encontrados;
+    }
+  
     public void delete(Long archivoId){
         LOGGER.log(Level.INFO, "Borrando el archivo con id={0}", archivoId);
         ArchivoEntity archivoEntity = em.find(ArchivoEntity.class, archivoId);
