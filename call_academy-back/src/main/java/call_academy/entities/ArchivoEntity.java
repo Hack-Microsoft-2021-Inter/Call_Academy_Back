@@ -58,12 +58,13 @@ public class ArchivoEntity extends BaseEntity implements Serializable{
         this.creador = creador;
     }
 
-    public MateriaEntity getMaterias() {
+    public MateriaEntity getMateria() {
         return materia;
     }
 
-    public void setMaterias(MateriaEntity materias) {
-        this.materia = materias;
+    public void setMateria(MateriaEntity materia) {
+        this.materia = materia;
     }
+
        
 }
