@@ -38,7 +38,7 @@ public class MonitoriaGrupalLogic {
     
     /////////////////////////// MÉTODOS ////////////////////////////
     
-    public MonitoriaGrupalEntity createmonitoriaIndividual (MonitoriaGrupalEntity monitoria) throws BusinessLogicException{
+    public MonitoriaGrupalEntity createMonitoriaGrupal (MonitoriaGrupalEntity monitoria) throws BusinessLogicException{
         
         LOGGER.log(Level.INFO, "Inicia proceso de crear monitoria grupal con id = {0}", monitoria.getId());
         

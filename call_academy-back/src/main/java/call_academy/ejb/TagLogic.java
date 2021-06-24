@@ -5,10 +5,11 @@
  */
 package call_academy.ejb;
 
+
 import call_academy.entities.TagEntity;
-import call_academy.exception.BusinessLogicException; 
-import call_academy.persistence.TagPersistence; 
-import java.until.List; 
+import call_academy.exceptions.BusinessLogicException;
+import call_academy.persistence.TagPersistence;
+import java.util.List;
 import javax.ejb.Stateless; 
 import javax.inject.Inject; 
 
@@ -77,13 +78,13 @@ public class TagLogic {
     public void deleteTag(Long id) { 
         persistence.delete(id);
     }
-        
-    private boolean uniqueNombre(List<TagEntitty>)List, String nombre) { 
-        for(TagEntity t: list) { 
-            if(t.getNombre().equals(nombre))
-                return false; 
-        }
-        
-        return true; 
-    }
     
+    private boolean uniqueNombre(List<TagEntity> list, String nombre) {
+        for (TagEntity u : list) {
+            if (u.getNombre().equals(nombre))
+                return false;
+        }
+        return true;
+    }
+      
+}

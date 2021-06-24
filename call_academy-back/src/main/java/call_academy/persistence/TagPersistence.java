@@ -13,6 +13,7 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+import javax.persistence.TypedQuery;
 
 /**
  *
@@ -52,4 +53,13 @@ public class TagPersistence {
         LOGGER.log(Level.INFO, "Saliendo de actualizar con el tag con if={0}", tagEntity.getId());
         return em.merge(tagEntity);
     }
+    
+    public List<TagEntity> findByNombre(String nombre) {
+        TypedQuery query = em.createQuery("Select e From TagEntity e where e.nombre like :nombre", TagEntity.class);
+        query = query.setParameter("nombre", "%" + nombre + "%");
+        
+        List<TagEntity> encontrados = query.getResultList();
+        return encontrados;
+    }
+    
 }
